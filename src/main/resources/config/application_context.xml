@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+    <bean id="testHelper" class="com.sarath.core_spring.pojo.TestHelper" scope="prototype"/>
+    <bean name="testPojo" class="com.sarath.core_spring.pojo.TestPojo">
+        <lookup-method name="getTestHelper" bean="testHelper"/>
+        <property name="marker" value="2"/>
+    </bean>
+    <bean name="derivedTestPojo" class="com.sarath.core_spring.pojo.DerivedTestPojo" parent="testPojo">
+        <property name="marker" value="5"/>
+    </bean>
+</beans>
