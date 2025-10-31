@@ -6,6 +6,7 @@ public class Test {
     public static void main(String[] args){
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("config/application_context.xml");
         TestPojo testPojo = (TestPojo) context.getBean("testPojo");
+        testPojo.greet();
         context.registerShutdownHook();
     }
 }
